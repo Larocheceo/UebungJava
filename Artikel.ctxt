@@ -1,0 +1,43 @@
+#BlueJ class context
+comment0.target=Artikel
+comment0.text=\r\n\ Einfache\ Artikel\ Klasse\r\n\r\n\ @author\ Rochella\ Vofo\r\n\ @version\ 0.1\r\n
+comment1.params=artikelNr\ art\ bestand\ preis
+comment1.target=Artikel(int,\ java.lang.String,\ int,\ double)
+comment1.text=\r\n\ Konstruktor\ der\ Klasse\ Artikel\r\n\r\n\ @param\ artikelNr\ muss\ 4-stellig\ &\ >\ 0\r\n\ @param\ art\ darf\ nicht\ null\ sein\r\n\ @param\ bestand\ >\=\ 0\r\n\ @param\ preis\ >\ 0.0\r\n
+comment10.params=art
+comment10.target=void\ setArt(java.lang.String)
+comment10.text=\r\n\ Veranderung\ des\ Artikelsartes\r\n\r\n\ @param\ art\ muss\ ein\ String\ sein\r\n
+comment11.params=preis
+comment11.target=void\ setPreis(double)
+comment11.text=\r\n\ Den\ Preis\ des\ artikels\ anlegen.\r\n\r\n\ @param\ preis\ >\ 0.0\r\n
+comment12.params=
+comment12.target=double\ getPreis()
+comment12.text=\r\n\ Den\ Preis\ eines\ artikels\ ausgeben.\r\n\r\n\ @param\ preis\ >\ 0.0\r\n
+comment13.params=bestand
+comment13.target=void\ setBestand(int)
+comment13.text=\r\n\ Ver\u00E4nderung\ des\ artikelsbestandes\r\n\r\n\ @param\ bestand\ muss\ >\=\ 0\ sein\r\n
+comment2.params=artikelNr\ art\ preis
+comment2.target=Artikel(int,\ java.lang.String,\ double)
+comment2.text=\r\n\ Konstruktor\ der\ Klasse\ Artikel\r\n\r\n\ @param\ artikelNr\ muss\ 4-stellig\ &\ >\ 0\r\n\ @param\ art\ darf\ nicht\ null\ sein\r\n\ @param\ bestand\ >\=\ 0\r\n
+comment3.params=bedingung\ message
+comment3.target=void\ pruefen(boolean,\ java.lang.String)
+comment3.text=\r\n\ pruefen\:\ prueft\ die\ Konstruktoren\ Parameters\r\n\r\n\ @param\ bedingung\:\ Die\ bedigung,\ die\ zu\ pruefen\ ist.\r\n\ @param\ message\:\ Die\ Fehlermeldung.\r\n
+comment4.params=menge
+comment4.target=void\ bucheZugang(int)
+comment4.text=\r\n\ Erhoehung\ eines\ Bestandes\r\n\r\n\ @param\ menge\ muss\ >\ 0\ sein\r\n
+comment5.params=menge
+comment5.target=void\ bucheAbgang(int)
+comment5.text=\r\n\ Abbuchung\ eines\ Bestandes\r\n\r\n\ @param\ menge\ \ muss\ >\ 0\ sein\r\n
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment6.text=\r\n\ Darstellung\ eines\ Objekts\ als\ Zeichenketten\r\n\r\n\ @return\ \ gibt\ ein\ Artikel\ Objekt\ aus\r\n
+comment7.params=
+comment7.target=java.lang.String\ getArt()
+comment7.text=\r\n\ Ausgabe\ des\ Artikelsartes\r\n\r\n\ @return\ gibt\ den\ Art\ des\ Artikels\r\n
+comment8.params=
+comment8.target=int\ getBestand()
+comment8.text=\r\n\ Ausgabe\ des\ Bestandes\ des\ Artikels\r\n\r\n\ @return\ gibt\ den\ Bestand\ des\ Artikels\r\n
+comment9.params=
+comment9.target=int\ getArtikelNr()
+comment9.text=\r\nAusgabe\ der\ Artikelnummer\r\n\r\n\ @return\ gibt\ den\ Artikelnummer\ aus\r\n
+numComments=14
