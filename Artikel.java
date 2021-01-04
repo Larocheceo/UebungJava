@@ -73,7 +73,7 @@ public class Artikel{
     }
     
     /**
-     * Darstellung eines Objekts als Zeichenketten
+     * Darstellung eines Artikel-Objekts als Zeichenketten.
      *
      * @return  gibt ein Artikel Objekt aus
      */

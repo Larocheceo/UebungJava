@@ -76,6 +76,7 @@ public class KontoDialog{
         if (funktion == REGISTRIEREN){
            
            registrierenArtikel(waehlenKonstruktor());
+           
             
         } else if (funktion == BUCHE_ZUGANG){
            pruefenArtikel();
