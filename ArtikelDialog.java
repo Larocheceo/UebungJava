@@ -5,7 +5,7 @@ import java.util.*;
  * @author Rochella Djouakeu Vofo / Joel Boergers
  * @version 0.1
  */
-public class KontoDialog{
+public class ArtikelDialog{
     private static final int ERSTE_KONSTRUKTOR              = 1;
     private static final int ZWEITE_KONSTRUKTOR             = 2;
     private static final int REGISTRIEREN                   = 1;
@@ -23,7 +23,7 @@ public class KontoDialog{
      * @param args ist ein array mit strings.
      */
     public static void main(String[] args){
-        new KontoDialog().start();
+        new ArtikelDialog().start();
     }
     
     /**

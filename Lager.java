@@ -2,7 +2,7 @@
 /**
  * Klasse zur Verwaltung von Artikeln in einem Lager. Erweiterung der Klasse Artikel
  * 
- * @author Rochella Djouakeu Vofo & Boergers Joel 
+ * @author Rochella Djouakeu Vofo &  Joel Boergers
  * @version 0.1
  */
 public class Lager
@@ -29,37 +29,7 @@ public class Lager
        this(MAX_ANZ_ARTIKEL);
      }
    
-      /**
-     * Methode zum Anlegen eines Artikels mit einem gegebenen Bestand.
-     *
-     * @param artikelNr Muss 4-stellig sein.
-     * @param art Darf nicht null sein.
-     * @param bestand muss >= 0.
-     * @param preis muss >  sein.
-     * @return Der angelegte Artikel.
-     */
-     public Artikel legeArtikelMitBestand(int artikelNr, String art, int bestand, double preis){
-       //pruefen(!findeArtikel(artikelNr), "Ein Artikel mit selber ArtikelNr existiert bereits im Lager!");
-       pruefen(getArtikelAnzahl() < lagerGroesse, "Der Lager ist voll, kein Artikel kann angelegt werden!");
-       Artikel artikel =  new Artikel(artikelNr, art, bestand, preis);
-       return artikel;
-     }
      
-     /**
-     * Methode zum Anlegen eines Artikels ohne einen gegebenen Bestand.
-     *
-     * @param artikelNr Muss 4-stellig sein.
-     * @param art Darf nicht null sein.
-     * @param preis muss >  sein.
-     * @return Der angelegte Artikel.
-     */
-     public Artikel legeArtikelOhneBestand(int artikelNr, String art, double preis){
-       //pruefen(!findeArtikel(artikelNr), "Ein Artikel mit selber ArtikelNr existiert bereits im Lager!");
-       pruefen(getArtikelAnzahl() < lagerGroesse, "Der Lager ist voll, kein Artikel kann angelegt werden!");
-       Artikel artikel =  new Artikel(artikelNr, art, preis);
-       return artikel;
-     }
-    
     /**
     * Methode zur Einfuegung eines vorher angelegten Artikel-Objektes in das Artikel-Array im Lager.
     *
@@ -85,13 +55,18 @@ public class Lager
     public void entferneArtikel(int artikelNr){
        pruefen(artikelNr >= 1000 && artikelNr < 10000, "Artikelnummer muss 4-stellig sein"); //Stop falls AtikelNr nicht gueltig ist.
        pruefen(findeArtikel(artikelNr), "Der zu loeschenden Artikel existiert im Lager nicht!");
+       int anzahlArtikel = getArtikelAnzahl(), j = 0;
+       
        for(int i = 0; i < artikelTab.length; i++){
            if(artikelTab[i].getArtikelNr() == artikelNr){
-              artikelTab[i] = artikelTab[lagerGroesse -1 ];
-              artikelTab[lagerGroesse - 1] = null;
-           break;
+               for( j = i; j < anzahlArtikel-1; j++){
+                    artikelTab[j] = artikelTab[j + 1 ];     
+               }
+               artikelTab[j] = null;
+               break;
             }
         }
+       
     }
     
     /**
@@ -160,7 +135,7 @@ public class Lager
      * @param prozent muss >= -100.0 
      */
     void aenderePreisAllerArtikel(double prozent){
-        pruefen(prozent > - 100.0, "Sie können den Preis um mehr als 100 Prozent nicht vermindern, sonst wird der Preis 0.0 sein!");
+        pruefen(prozent > - 100.0, "Sie können den Preis nicht um mehr als 100 Prozent vermindern, sonst wird der Preis 0.0 sein!");
         for(int i = 0; i < artikelTab.length; i++){
            if (artikelTab[i] == null){
                break;
@@ -193,11 +168,11 @@ public class Lager
     /**
      * Darstellung eines Lager-Objekts als Zeichenketten.
      *
-     * @return Die erzeugte Zeichenkette.
+     * @return die erzeugte Zeichenkette.
      */
     public String toString(){
         return "Lagergroesse: "     + lagerGroesse +"\r\n" +
-                "Artikel im Lager"  + getArtikelAnzahl();
+                "Artikel im Lager: "  + getArtikelAnzahl();
                 
         
      }
@@ -205,7 +180,7 @@ public class Lager
     /**
      * Ausgabe der Anzahl an Artikel im Lager. 
      *
-     * @return Die Anzahl an Artikel, die im Lager vorhanden sind.
+     * @return die Anzahl an Artikel, die im Lager vorhanden sind.
      */
     public int getArtikelAnzahl(){
        int anzArtikel = 0;

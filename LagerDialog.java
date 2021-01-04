@@ -79,14 +79,14 @@ public class LagerDialog
                         + BUCHE_ABGANG                  +    ": Abgang Buchen."                         + "\r\n"
                         + AENDERE_PREIS_ALLER_ARTIKEL   + ": Preise aller Artikel im Lager aendern."    + "\r\n"
                         + GET_ARTIKEL                   + ": Artikel im Lager Darstellen."              + "\r\n"
-                        + GET_ARTIKEL_ANZAHL            + ": Anzahl aller Artikel im Lager bestimmen"   + "\r\n"
-                        + GET_LAGER_GROESSE             + ": Die Groesse des Lagers bestimmen"          + "\r\n"
-                        + SET_ARTIKEL_PREIS             + ": Der Preis eines Artikels aendern"          + "\r\n"
-                        + SET_ARTIKEL_BESTAND           + ": Der Bestand eines Artikels aendern"        + "\r\n"
-                        + SET_ARTIKEL_ART               + ": Die Bezeichnung eines Artikels aendern"    + "\r\n"
-                        + DARSTELLEN_ALLE_ARTIKEL       + ": Alle Artikel im Lager darstellen"          +"\r\n" 
+                        + GET_ARTIKEL_ANZAHL            + ": Anzahl aller Artikel im Lager bestimmen."   + "\r\n"
+                        + GET_LAGER_GROESSE             + ": Die Groesse des Lagers bestimmen."          + "\r\n"
+                        + SET_ARTIKEL_PREIS             + ": Der Preis eines Artikels aendern."          + "\r\n"
+                        + SET_ARTIKEL_BESTAND           + ": Der Bestand eines Artikels aendern."        + "\r\n"
+                        + SET_ARTIKEL_ART               + ": Die Bezeichnung eines Artikels aendern."    + "\r\n"
+                        + DARSTELLEN_ALLE_ARTIKEL       + ": Alle Artikel im Lager darstellen."          +"\r\n" 
                         
-                        + ENDE                          +    ": Programm beenden"                       + "\r\n"
+                        + ENDE                          +    ": Programm beenden."                       + "\r\n"
                         + "-----------------------------------------");
                        
         return input.nextInt();
@@ -109,7 +109,7 @@ public class LagerDialog
                 break;
             case ENTFERNE_ARTIKEL:
                  lager.entferneArtikel(lesenArtikelNr());
-                 System.out.println("Der Artikel wurde erfolgreich vom Lager entfernt");
+                 System.out.println("Der Artikel wurde erfolgreich vom Lager entfernt!");
                  System.out.println();
                  break;
             case BUCHE_ZUGANG:
@@ -124,7 +124,7 @@ public class LagerDialog
                  break;
             case SET_ARTIKEL_BESTAND:
                  lager.setArtikelBestand(lesenArtikelNr(), lesenMenge());
-                 System.out.println("Der Bestand des Artikels wurde erfolgreich geaendert");
+                 System.out.println("Der Bestand des Artikels wurde erfolgreich geaendert.");
                  System.out.println();
                  break;     
             case AENDERE_PREIS_ALLER_ARTIKEL:
@@ -142,7 +142,7 @@ public class LagerDialog
                  break;
             case SET_ARTIKEL_PREIS:
                  lager.setArtikelPreis(lesenArtikelNr(), lesenPreis());
-                 System.out.println("Der Preis wurde erfolgreich geaendert");
+                 System.out.println("Der Preis des Artikels wurde erfolgreich geaendert.");
                  System.out.println();
                  break;
             case SET_ARTIKEL_ART:
@@ -154,8 +154,14 @@ public class LagerDialog
                  System.out.println("Geben Sie die Stelle des Artikels im Lager:");
                  int stelle = input.nextInt();
                  input.nextLine();
-                 System.out.println(lager.getArtikel(stelle));
-                 System.out.println();
+                 Artikel artikel_ = lager.getArtikel(stelle);
+                 if (artikel_ == null){
+                    System.out.println("Es gibt keinen Artikel an dieser Stelle im Lager!");
+                    System.out.println();
+                  }else {
+                    System.out.println(artikel_);
+                    System.out.println();
+                 }
                  break;
             case DARSTELLEN_ALLE_ARTIKEL:
                  darstellenAlleArtikel();
@@ -183,10 +189,14 @@ public class LagerDialog
             int groesse = input.nextInt();
             input.nextLine();
             lager = new Lager(groesse);
+            System.out.println(lager);
+            System.out.println();
         } else if (antwort == 'n'){
             lager = new Lager();
+            System.out.println(lager);
+            System.out.println();
         } else {
-            System.out.println("Falsche angabe! Bitte wiederholen.");
+            System.out.println("Falsche Angabe! Bitte wiederholen.");
             lagerHerstellen();
         }
         
@@ -293,7 +303,6 @@ public class LagerDialog
         String art;
         System.out.println("Geben Sie eine Bezeichnung ein: ");
         art = input.nextLine();
-        input.nextLine();
         return art;
     }
     
@@ -302,13 +311,21 @@ public class LagerDialog
      *
      */
     public void darstellenAlleArtikel(){
-        for(int i = 0; i < lager.getLagerGroesse(); i++){
-            Artikel artikel = lager.getArtikel(i);
-            if ( artikel != null){
-                System.out.println(artikel + " | ");
+        Artikel artikel = lager.getArtikel(0);
+        if (artikel == null){
+            System.out.println("Es gibt keinen Artikel im Lager!");
+        }else {
+            for(int i = 0; i < lager.getLagerGroesse(); i++){
+                artikel = lager.getArtikel(i);
+                if ( artikel != null){
+                    System.out.println(i + ": " + artikel);
                 
+                } else {
+                    break;
+                }
             }
         }
+        
     }
     
     /**
@@ -326,7 +343,7 @@ public class LagerDialog
     /**
      * Methode zur Bestimmung mit welchem Konstruktor man einen Artikel anlegen will.
      *
-     * @return konstruktor ist ein Integer.
+     * @return 1 oder 2.
      *      Falls 1, wird der Konstruktor mit 3 Parametern benutzt, um den Artikel zu erzeugen.
      *      Falls 2, wird der Konstruktor mit 2 Parametern benutzt, um den Artikel zu erzeugen.
      */

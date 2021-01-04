@@ -18,21 +18,7 @@ public class LagerTest
     
     private final static double EPSILON = 0.000001;
     
-    @Test
-    public void test_legeArtikel_mit_bestand(){
-        Artikel expected = new Artikel(1234, "Schuhe", 12, 20.0);
-        Artikel obtained = lager.legeArtikelMitBestand(1234, "Schuhe", 12, 20.0);
-        assertEquals(expected, obtained);
-        
-    }
     
-    @Test
-    public void test_legeArtikel_ohne_bestand(){
-        Artikel expected = new Artikel(1234, "Schuhe", 0, 20.0);
-        Artikel obtained = lager.legeArtikelOhneBestand(1234, "Schuhe", 20.0);
-        assertEquals(expected, obtained);
-        
-    }
     
     @Test
     public void test_legeAnArtikel(){

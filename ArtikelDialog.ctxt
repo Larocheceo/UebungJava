@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.target=KontoDialog
+comment0.target=ArtikelDialog
 comment0.text=\r\n\ Dialog\ klasse\ fuer\ Klasse\ Artikel\r\n\ \r\n\ @author\ Rochella\ Djouakeu\ Vofo\ /\ Joel\ Boergers\r\n\ @version\ 0.1\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])

@@ -78,10 +78,10 @@ public class Artikel{
      * @return  gibt ein Artikel Objekt aus
      */
     public String toString(){
-        return "Artikel:"   + artikelNr     + " " +
-        "Bezeichnung:"      + art           + " " +
-        "Bestand:"          + bestand       + " " + 
-        "Preis:"            + preis;
+        return "Artikelnummer:"   + artikelNr     + " " +
+        "Bezeichnung:"            + art           + " " +
+        "Bestand:"                + bestand       + " " + 
+        "Preis:"                  + preis;
     }
     
     /**
