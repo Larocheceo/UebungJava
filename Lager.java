@@ -2,7 +2,7 @@
 /**
  * Klasse zur Verwaltung von Artikeln in einem Lager. Erweiterung der Klasse Artikel
  * 
- * @author Rochella Djouakeu Vofo &  Joel Boergers
+ * @author Rochella Djouakeu Vofo &&  Joel Boergers
  * @version 0.1
  */
 public class Lager
@@ -144,6 +144,18 @@ public class Lager
            artikelTab[i].setPreis(preis + ((preis * prozent)/100));
         }
     }
+    
+    public void aendereArtikelPreis(int artikelNr, double prozent){
+        pruefen(prozent > - 100.0, "Sie können den Preis nicht um mehr als 100 Prozent vermindern, sonst wird der Preis 0.0 sein!");
+        pruefen(findeArtikel(artikelNr), "Die gegebene Nummer stimmt mit keinem Artikel im Lager!");
+        for(int i = 0; i < artikelTab.length; i++){
+           if (artikelTab[i].getArtikelNr() == artikelNr){
+               double preis = artikelTab[i].getPreis();
+               artikelTab[i].setPreis(preis + ((preis * prozent)/100));
+               break;
+           }   
+        }
+    }
 
     /**
     * Ausgabe eines Artikels.
@@ -171,11 +183,38 @@ public class Lager
      * @return die erzeugte Zeichenkette.
      */
     public String toString(){
-        return "Lagergroesse: "     + lagerGroesse +"\r\n" +
-                "Artikel im Lager: "  + getArtikelAnzahl();
+        return "Lagergroesse: "                 + lagerGroesse       +"\r\n" +
+                "Artikel im Lager: "            + getArtikelAnzahl() +"\r\n" +
+                "--------------------------------------------------" +"\r\n" +
+                darstellenAlleArtikel();
                 
         
      }
+     
+    /**
+     * Alle Artikel im Lager darstellen.
+     *
+     */
+    private String darstellenAlleArtikel(){
+        Artikel artikel = getArtikel(0);
+        String lager = "";
+        if (artikel == null){
+            lager = "Es gibt keinen Artikel im Lager!";
+            
+        }else {
+            for(int i = 0; i < getLagerGroesse(); i++){
+                artikel = getArtikel(i);
+                if ( artikel != null){
+                    lager+= i + ": " + artikel + "\n";
+                
+                } else {
+                    break;
+                }
+            }
+        }
+        
+        return lager;
+    }
 
     /**
      * Ausgabe der Anzahl an Artikel im Lager. 
@@ -252,7 +291,34 @@ public class Lager
         return null;
     }
     
+    /**
+     * Methode zum Ausgeben aller Artikel mit Bestellungsinformationen.
+     *
+     * @return Die Liste aller Artikeln.
+     */
+    public String ausgebenBestandsListe(){
+        double gesamtWert = 0;
+        String liste = "" ;
+        liste += liste.format("%-10s%-60s%-10s%-15s%-15s%n", "ArtNr","Beschreibung","Preis","Bestand", "Gesamt") ;
+        liste += "-".repeat(110);
+        liste += "\n";
+        for(Artikel artikel: artikelTab){
+            if(artikel == null){
+                break;
+            }
+            double gesamtArtikel = artikel.getBestand() * artikel.getPreis();
+            liste += liste.format("%-10s%-60s%-10s%-15s%-15.2f%n",artikel.getArtikelNr(), artikel.getBeschreibung(),
+                  artikel.getPreis(), artikel.getBestand(), gesamtArtikel);
+            gesamtWert += gesamtArtikel;
+        }
+        liste += "-".repeat(110);
+        liste += "\n";
+        liste += liste.format("%s%92.2f", "Gesamwert:", gesamtWert);
+        liste += "\n";
+        return liste;
+    }
     
+   
     /**
      * Methode zum Pruefen einer Bedingung.
      *

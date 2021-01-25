@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Video
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Video.\r\n\ \r\n\ @author\ Rochella\ Djouakeu\ Vofo\ &&\ Boergers\ Joel.\r\n\ @version\ 0.1\r\n
+comment1.params=artikelNr\ bestand\ preis\ titel\ spieldauer\ jahr
+comment1.target=Video(int,\ int,\ double,\ java.lang.String,\ int,\ int)
+comment1.text=\r\n\ Konstruktor\ der\ Klasse\ Video.\r\n\r\n\ @param\ artikelNr\ Die\ Nummer\ des\ Videos.\r\n\ @param\ bestand\ Der\ Bestand\ des\ Videos.\r\n\ @param\ preis\ Der\ Preis\ des\ Videos.\r\n\ @param\ titel\ Der\ Titel\ eines\ Videos.\r\n\ @param\ spieldauer\ Die\ Spieldauer\ des\ Videos.\r\n\ @param\ jahr\ Das\ Jahr\ an\ dem\ das\ Video\ ver\u00F6ffentlicht\ wurde.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getBeschreibung()
+comment2.text=\r\n\ Beschreibung\ des\ Videos\ ausgeben.\r\n\r\n\ @return\ Die\ Beschreibung\ des\ Artikels.\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ Darstellung\ des\ Videos\ als\ Zeichenkette.\r\n\r\n\ @return\ Die\ Darstellung\ eines\ Videos\ als\ Zeichenkette.\r\n
+comment4.params=spieldauer
+comment4.target=void\ setSpieldauer(int)
+comment4.text=\r\n\ Spieldauer\ des\ Video\ \u00E4ndern.\r\n\r\n\ @param\ spieldauer\ Die\ Spieldauer\ des\ Videos.\r\n
+comment5.params=jahr
+comment5.target=void\ setJahr(int)
+comment5.text=\r\n\ Das\ Jahr\ eines\ Video\ \u00E4ndern.\r\n\r\n\ @param\ jahr\ Das\ Jahr\ des\ Video.\r\n
+comment6.params=
+comment6.target=int\ getJahr()
+comment6.text=\r\n\ Das\ Jahr\ an\ dem\ das\ Video\ ver\u00F6ffentlich\ wurde,\ ausgeben.\r\n\r\n\ @return\ Das\ Jahr.\r\n
+comment7.params=
+comment7.target=int\ getSpieldauer()
+comment7.text=\r\n\ Die\ spieldauer\ eine\ Videos\ ausgeben.\r\n\r\n\ @return\ Die\ Spieldauer\ des\ Videos.\r\n
+numComments=8

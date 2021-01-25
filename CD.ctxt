@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=CD
+comment0.text=\r\n\ Klasse\ zur\ Erzeugung\ und\ zur\ Verwaltung\ eines\ CD\ Objektes.\r\n\ \r\n\ @author\ Rochella\ Djouakeu\ Vofo\ &&\ Joel\ Boergers\r\n\ @version\ 0.1\r\n\ \r\n\ \r\n
+comment1.params=artikelNr\ bestand\ preis\ interpret\ titel\ anzahlTitel
+comment1.target=CD(int,\ int,\ double,\ java.lang.String,\ java.lang.String,\ int)
+comment1.text=\r\n\ Konstruktor\ der\ Klasse\ CD.\r\n\r\n\ @param\ artikelNr\ Nummer\ des\ CDs\r\n\ @param\ bestand\ Bestand\ des\ CDs\r\n\ @param\ preis\ Preis\ des\ CDs\r\n\ @param\ interpret\ Interpret\ des\ CDs\r\n\ @param\ titel\ Titel\ des\ CDs\r\n\ @param\ anzahlTitel\ Anzahl\ an\ Titeln\ im\ CD.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getBeschreibung()
+comment2.text=\r\n\ Beschreibung\ eines\ CDs\ ausgeben.\r\n\r\n\ @return\ Die\ Beschreibung\ als\ Zeichenkette.\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ Darstellung\ eines\ CDs\ als\ zeichenkette.\r\n\r\n\ @return\ Der\ dargestellte\ CD.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getInterpret()
+comment4.text=\r\n\ Interpret\ eines\ CDs\ ausgeben.\r\n\r\n\ @return\ Der\ Interpret\ eines\ CDs.\r\n
+comment5.params=
+comment5.target=int\ getAnzahlTitel()
+comment5.text=\r\n\ Anzahl\ an\ Titel\ in\ einem\ CD\ ausgeben.\ \r\n\r\n\ @return\ Die\ Anzahl\ an\ Titel\ in\ einem\ CD.\r\n
+comment6.params=anzahlTitel
+comment6.target=void\ setAnzahlTitel(int)
+comment6.text=\r\n\ MAnzahl\ an\ Titel\ in\ einem\ CD\ \u00E4ndern.\r\n\r\n\ @param\ anzahlTitel\ Die\ neue\ Anzahl\ an\ Titeln.\r\n
+comment7.params=interpret
+comment7.target=void\ setInterpret(java.lang.String)
+comment7.text=\r\n\ Interpret\ eines\ CDs\ \u00E4ndern.\r\n\r\n\ @param\ interpret\ Der\ Interpret.\r\n
+numComments=8

@@ -1,15 +1,16 @@
 
 /**
- * Einfache Artikel Klasse
+ * Einfache Artikel Klasse.
  *
- * @author Rochella Vofo
+ * @author  Rochella Vofo && Boergers Joel.
  * @version 0.1
  */
-public class Artikel{
+public abstract class  Artikel extends Lager{
     private int     artikelNr;
     private int     bestand;
     private double  preis;
     private String  art;
+    private String titel;
     
     /**
      * Konstruktor der Klasse Artikel
@@ -19,10 +20,11 @@ public class Artikel{
      * @param bestand >= 0
      * @param preis > 0.0
      */
-    public Artikel(int artikelNr, String art, int bestand, double preis){
+    public Artikel(int artikelNr, String art, int bestand, double preis, String titel){
         pruefen(artikelNr >= 1000 && artikelNr < 10000, "Artikelnummer muss 4-stellig sein");
         this.artikelNr = artikelNr;
         setArt(art);
+        setTitel(titel);
         setBestand(bestand);
         setPreis(preis);
     }
@@ -34,22 +36,23 @@ public class Artikel{
      * @param art darf nicht null sein
      * @param bestand >= 0
      */
-    public Artikel(int artikelNr, String art, double preis){
-        this(artikelNr, art, 0, preis);
+    public Artikel(int artikelNr, String art, double preis, String titel){
+        this(artikelNr, art, 0, preis, titel);
     }
     
     /**
-     * pruefen: prueft die Konstruktoren Parameters
+     * Eine Bedingung prüfen.
      *
-     * @param bedingung: Die bedigung, die zu pruefen ist.
-     * @param message: Die Fehlermeldung.
-     */
+     * @param bedingung die bedigung, die zu pruefen ist.
+     * @param message die Fehlermeldung.
+    
     public static void pruefen(boolean bedingung, String message){
         if (!bedingung){
             throw new IllegalArgumentException(message);
         }
         
     }
+     */
     
     /**
      * Erhoehung eines Bestandes
@@ -72,27 +75,20 @@ public class Artikel{
         bestand = bestand - menge;
     }
     
-    /**
-     * Darstellung eines Artikel-Objekts als Zeichenketten.
-     *
-     * @return  gibt ein Artikel Objekt aus
-     */
-    public String toString(){
-        return "Artikelnummer:"   + artikelNr     + " " +
-        "Bezeichnung:"            + art           + " " +
-        "Bestand:"                + bestand       + " " + 
-        "Preis:"                  + preis;
-    }
     
     /**
-     * Ausgabe des Artikelsartes
+     * Darstellung eines Artikels als zeichenkette.
      *
-     * @return gibt den Art des Artikels
+     * @return Der Rückgabewert
      */
-    public String getArt(){
-        return art;
-       
-    }
+    public abstract String toString();
+    
+    /**
+     * Ausgabe der Beschreibung des Artikels.
+     *
+     * @return Gibt den Art des Artikels
+     */
+    public abstract String getBeschreibung();
     
     /**
      * Ausgabe des Bestandes des Artikels
@@ -125,6 +121,26 @@ public class Artikel{
     }
     
     /**
+     * Der Titel eines Artikels ändern.
+     *
+     * @param titel Der Titel des Artikels.
+     */
+    public void setTitel(String titel){
+        pruefen( art != null && !art.isEmpty() && !art.isBlank(), "Der Titel darf nicht null oder leer sein");
+        this.titel = titel;
+       
+    }
+    
+    /**
+     * Titel eines Artikels ausgeben.
+     *
+     * @return Der Rückgabewert
+     */
+    public String getTitel(){
+        return this.titel;
+    }
+    
+    /**
      * Den Preis des artikels anlegen.
      *
      * @param preis > 0.0
@@ -154,5 +170,17 @@ public class Artikel{
         pruefen(bestand >= 0, "Der Bestand muss >= 0 sein");
         this.bestand = bestand;
     }
+    
+    /**
+     * Art eines Artikels ausgeben.
+     *
+     * @return Die Art des Artikels.
+     */
+    public String getArtikelArt(){
+         return art;
+     }
+    
+    
+    
     
 }

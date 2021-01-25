@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.target=LagerTest
-comment0.text=\r\n\ Die\ Test-Klasse\ LagerTest.\ Diese\ Klasse\ dient\ dazu,\ alle\ die\ geschriebenen\ Methoden\ in\ der\ Klasse\ Lager,\ zu\ testen.\r\n\r\n\ @author\ \ Rochella\ Vofo\ &\ Joel\ Boergers.\r\n\ @version\ 0.1\r\n
+comment0.target=LagerTestMitVererbung
+comment0.text=\r\n\ Die\ Test-Klasse\ LagerTestMitVererbung.\ Diese\ Klasse\ dient\ dazu,\ alle\ die\ geschriebenen\ Methoden\ in\ der\ Klasse\ Lager,\ zu\ testen.\r\n\r\n\ @author\ \ Rochella\ Vofo\ &\ Joel\ Boergers.\r\n\ @version\ 0.1\r\n
 comment1.params=
 comment1.target=void\ test_legeAnArtikel()
 comment10.params=
@@ -18,11 +18,11 @@ comment15.target=void\ test_getArtikelAnzahl_mit_0_artikel_im_lager_erwartet_0()
 comment16.params=
 comment16.target=void\ test_getArtikelAnzahl_mit_2_artikel_im_lager_erwartet_2()
 comment17.params=
-comment17.target=LagerTest()
-comment17.text=\r\n\ Konstruktor\ fuer\ die\ Test-Klasse\ LagerTest\r\n
+comment17.target=void\ setUp()
+comment17.text=\r\n\ \ Setzt\ das\ Testger\u00FCst\ fuer\ den\ Test.\r\n\r\n\ Wird\ vor\ jeder\ Testfall-Methode\ aufgerufen.\r\n
 comment18.params=
-comment18.target=void\ setUp()
-comment18.text=\r\n\ \ Setzt\ das\ Testger\u00FCst\ fuer\ den\ Test.\r\n\r\n\ Wird\ vor\ jeder\ Testfall-Methode\ aufgerufen.\r\n
+comment18.target=LagerTestMitVererbung()
+comment18.text=\r\n\ Konstruktor\ fuer\ die\ Test-Klasse\ LagerTestMitVererbung\r\n
 comment19.params=
 comment19.target=void\ tearDown()
 comment19.text=\r\n\ Gibt\ das\ Testger\u00FCst\ wieder\ frei.\r\n\r\n\ Wird\ nach\ jeder\ Testfall-Methode\ aufgerufen.\r\n

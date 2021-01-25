@@ -17,16 +17,20 @@ public class LagerDialog
     private static final int GET_ARTIKEL_ANZAHL                 = 7;
     private static final int GET_LAGER_GROESSE                  = 8;
     private static final int SET_ARTIKEL_PREIS                  = 9;
-    private static final int SET_ARTIKEL_BESTAND                = 10;
-    private static final int SET_ARTIKEL_ART                    = 11;
+    private static final int SET_ARTIKEL_PREIS_PROZENT          = 10;
+    private static final int SET_ARTIKEL_BESTAND                = 11;
+    //private static final int SET_ARTIKEL_ART                    = 12;
     private static final int DARSTELLEN_ALLE_ARTIKEL            = 12;
-    private static final int ENDE                               = 13;
+    private static final int BESTAND_LISTE                      = 13;
+    private static final int ENDE                               = 14;
     
     private static final int ERSTE_KONSTRUKTOR                  = 1;
     private static final int ZWEITE_KONSTRUKTOR                 = 2;
+    private static final String ART                             = "Medien";
     
     private Artikel artikel1                                    = null;
     private Lager   lager;
+    
     
     Scanner input                                               = new Scanner(System.in);
     
@@ -72,25 +76,28 @@ public class LagerDialog
     * @return einen int, der zur entsprechenden Funktion in ausfuehrenFunktion fuehrt. 
     */
    private int einlesenFunktion(){
-        System.out.println("Wählen Sie ein Ziffer, um die entsprechende Aktion durchzuführen!"          + "\r\n"
-                        + LEGE_AN_ARTIKEL               +    ": Artikel im Lager anlegen."              + "\r\n"
-                        + ENTFERNE_ARTIKEL              +    ": Artikel vom Lager entfernen."           + "\r\n" 
-                        + BUCHE_ZUGANG                  +    ": Zugang buchen."                         + "\r\n"
-                        + BUCHE_ABGANG                  +    ": Abgang Buchen."                         + "\r\n"
-                        + AENDERE_PREIS_ALLER_ARTIKEL   + ": Preise aller Artikel im Lager aendern."    + "\r\n"
-                        + GET_ARTIKEL                   + ": Artikel im Lager Darstellen."              + "\r\n"
-                        + GET_ARTIKEL_ANZAHL            + ": Anzahl aller Artikel im Lager bestimmen."   + "\r\n"
-                        + GET_LAGER_GROESSE             + ": Die Groesse des Lagers bestimmen."          + "\r\n"
-                        + SET_ARTIKEL_PREIS             + ": Der Preis eines Artikels aendern."          + "\r\n"
-                        + SET_ARTIKEL_BESTAND           + ": Der Bestand eines Artikels aendern."        + "\r\n"
-                        + SET_ARTIKEL_ART               + ": Die Bezeichnung eines Artikels aendern."    + "\r\n"
-                        + DARSTELLEN_ALLE_ARTIKEL       + ": Alle Artikel im Lager darstellen."          +"\r\n" 
+        System.out.println("Wählen Sie ein Ziffer, um die entsprechende Aktion durchzuführen!"                          + "\r\n"
+                        + LEGE_AN_ARTIKEL               +    ": Artikel im Lager anlegen."                              + "\r\n"
+                        + ENTFERNE_ARTIKEL              +    ": Artikel vom Lager entfernen."                           + "\r\n" 
+                        + BUCHE_ZUGANG                  +    ": Zugang buchen."                                         + "\r\n"
+                        + BUCHE_ABGANG                  +    ": Abgang Buchen."                                         + "\r\n"
+                        + AENDERE_PREIS_ALLER_ARTIKEL   + ": Preise aller Artikel im Lager aendern."                    + "\r\n"
+                        + GET_ARTIKEL                   + ": Artikel im Lager Darstellen."                              + "\r\n"
+                        + GET_ARTIKEL_ANZAHL            + ": Anzahl aller Artikel im Lager bestimmen."                  + "\r\n"
+                        + GET_LAGER_GROESSE             + ": Die Groesse des Lagers bestimmen."                         + "\r\n"
+                        + SET_ARTIKEL_PREIS             + ": Der Preis eines Artikels aendern."                         + "\r\n"
+                        + SET_ARTIKEL_PREIS_PROZENT     + ": Der Preis eines Artikels um einen Prozent aendern."        + "\r\n"
+                        + SET_ARTIKEL_BESTAND           + ": Der Bestand eines Artikels aendern."
+                        + DARSTELLEN_ALLE_ARTIKEL       + ": Lager und deren Artikel darstellen."                       +"\r\n"
+                        + BESTAND_LISTE                 + ": Bestandsliste ausgeben"                                    +"\r\n"
                         
-                        + ENDE                          +    ": Programm beenden."                       + "\r\n"
-                        + "-----------------------------------------");
+                        + ENDE                          +    ": Programm beenden."                                      + "\r\n"
+                        + "-----------------------------------------------------");
                        
         return input.nextInt();
    }
+   
+   
     
     /**
      * Methode, die die entspreschende Methoden im Program aufruft.
@@ -102,7 +109,7 @@ public class LagerDialog
             case LEGE_AN_ARTIKEL:
                 System.out.println("Sie sollen zuerst einen Artikel registrieren!");
                 input.nextLine();
-                Artikel artikel = registrierenArtikel(waehlenKonstruktor());
+                Artikel artikel = registrierenArtikel();
                 lager.legeAnArtikel(artikel);
                 System.out.println("Der Artikel <" + artikel + "> wurde erfolgreich im Lager angelegt.");
                 System.out.println();
@@ -145,11 +152,16 @@ public class LagerDialog
                  System.out.println("Der Preis des Artikels wurde erfolgreich geaendert.");
                  System.out.println();
                  break;
-            case SET_ARTIKEL_ART:
-                 lager.setArtikelArt(lesenArtikelNr(), lesenArt());
-                 System.out.println("Die Bezeichnung des Artikels wurde erfolgreich geaendert");
+            case SET_ARTIKEL_PREIS_PROZENT:
+                 lager.aendereArtikelPreis(lesenArtikelNr(), lesenProzent());
+                 System.out.println("Der Preis des Artikels wurde erfolgreich geaendert.");
                  System.out.println();
                  break;
+            //case SET_ARTIKEL_ART:
+                 //lager.setArtikelArt(lesenArtikelNr(), lesenArt());
+                 //System.out.println("Die Bezeichnung des Artikels wurde erfolgreich geaendert");
+                 //System.out.println();
+                 //break;
             case GET_ARTIKEL:
                  System.out.println("Geben Sie die Stelle des Artikels im Lager:");
                  int stelle = input.nextInt();
@@ -164,9 +176,11 @@ public class LagerDialog
                  }
                  break;
             case DARSTELLEN_ALLE_ARTIKEL:
-                 darstellenAlleArtikel();
-                 System.out.println();
+                 System.out.println(lager);
                  break;
+            case BESTAND_LISTE:
+                  System.out.println(lager.ausgebenBestandsListe());
+                  break;
             case ENDE:
                  System.out.println("Programmende");
                  System.exit(0);
@@ -203,45 +217,81 @@ public class LagerDialog
         
     }
     
+    
+    /**
+     * Der Typ von einem Artikel lesen.
+     *
+     * @return artikelTypNummer Die Nummer, die den Typ von dem Artikel bestimmt.
+     */
+    public int artikelTyplesen(){
+        int artikelTypNummer;
+        System.out.println("Was füer Artikel wollen Sie anlegen? Geben die die Ziffer:" + "\n" + "1: CD\n2: Video\n3: Buch");
+        artikelTypNummer = input.nextInt();
+        input.nextLine();
+        return artikelTypNummer;
+    }
+    
+    
     /**
      * Methode zum Registrieren eines Artikels.
-     *
-     * @param konstruktorNr Ist 1 oder 2.
-     *      Falls 1, wird der Konstruktor mit 3 Parametern benutzt, um den Artikel zu erzeugen.
-     *      Falls 2, wird der Konstruktor mit 2 Parametern benutzt, um den Artikel zu erzeugen.
-     * @return  den registrierten  Artikel.
+     * 
+     * @return  artikel1  Der registrierte Artikel.
      */
-    public Artikel registrierenArtikel(int konstruktorNr){
-        int artikelNr;
-        int bestand;
+    
+    public Artikel registrierenArtikel(){
+        int artikelTypNummer = artikelTyplesen();
+        // Angabe prüefen
+        int artikelNr, bestand, anzahlTitel, spieldauer, jahr;
+        String interpret, titel, autor, verlag;
         double preis;
-        String art;
         
         System.out.println("Nummer des Artikels: ");
         artikelNr = input.nextInt();
         input.nextLine();
         
-        System.out.println("Art des Artikels: ");
-        art = input.nextLine().trim();
+        System.out.println("Bestand des Artikels: ");
+        bestand = input.nextInt();
+        input.nextLine();
         
-
-        System.out.println("Preis des Artikels: ");
+        System.out.println("Preis des Artikels: ");     
         preis = input.nextDouble();
         input.nextLine();
         
-        if (konstruktorNr == ERSTE_KONSTRUKTOR){
-            System.out.println("Bestand des Artikels: ");
-            bestand = input.nextInt();
-            input.nextLine();
-            artikel1 = new Artikel(artikelNr, art, bestand, preis);
-        } else {
-            artikel1 = new Artikel(artikelNr, art, preis);
+        System.out.println("Titel: ");     
+        titel = input.nextLine().trim();
+        
+        switch (artikelTypNummer){
+            case 1:
+                System.out.println("Anzahl der Titel im CD: ");
+                anzahlTitel = input.nextInt();
+                input.nextLine();
+                System.out.println("Interpret: ");     
+                interpret = input.nextLine().trim();
+                artikel1 = new CD(artikelNr, bestand, preis, interpret, titel, anzahlTitel);
+                break;
+            case 2:
+                 System.out.println("Geben sie die Spieldauer in Minuten:");
+                 spieldauer = input.nextInt();
+                 input.nextLine();
+                 System.out.println("Geben Sie das Jahr an dem das Medium veröffentlicht wurde:");
+                 jahr = input.nextInt();
+                 artikel1 = new Video(artikelNr, bestand, preis, titel, spieldauer, jahr);
+                 break;
+            case 3: 
+                System.out.println("Autor: ");     
+                autor = input.nextLine().trim();
+                System.out.println("Verlag: ");     
+                verlag = input.nextLine().trim();
+                artikel1 = new Buch(artikelNr, bestand, preis, autor,titel, verlag);
+                break;
+            default:
+                throw new IllegalArgumentException("Die Angabe ist falsch gegeben!");
+                
         }
-      
-        return artikel1;
-         
-    }
     
+        return artikel1;
+    }
+
     /**
      * Methode zum Lesen einer Artikelnummer.
      *
@@ -306,27 +356,7 @@ public class LagerDialog
         return art;
     }
     
-    /**
-     * Alle Artikel im Lager darstellen.
-     *
-     */
-    public void darstellenAlleArtikel(){
-        Artikel artikel = lager.getArtikel(0);
-        if (artikel == null){
-            System.out.println("Es gibt keinen Artikel im Lager!");
-        }else {
-            for(int i = 0; i < lager.getLagerGroesse(); i++){
-                artikel = lager.getArtikel(i);
-                if ( artikel != null){
-                    System.out.println(i + ": " + artikel);
-                
-                } else {
-                    break;
-                }
-            }
-        }
-        
-    }
+    
     
     /**
      * Methode zum Pruefen eines Artikels. Hier wird zuerst geprüft, ob ein artikel vorliegt, wenn man eine Methode
@@ -336,26 +366,8 @@ public class LagerDialog
     private void pruefenArtikel(){
         if (artikel1 == null){
             System.out.println("Registriere zuerst einen Artikel, da kein Artikel vorliegt!");
-            registrierenArtikel(waehlenKonstruktor());
+            registrierenArtikel();
         }
     }
-
-    /**
-     * Methode zur Bestimmung mit welchem Konstruktor man einen Artikel anlegen will.
-     *
-     * @return 1 oder 2.
-     *      Falls 1, wird der Konstruktor mit 3 Parametern benutzt, um den Artikel zu erzeugen.
-     *      Falls 2, wird der Konstruktor mit 2 Parametern benutzt, um den Artikel zu erzeugen.
-     */
-    public int waehlenKonstruktor(){
-       int konstruktor;
-       System.out.println("Wählen Sie einen Konstruktor ein, mit dem Sie den Artikel registrieren wollen!"   +"\r\n"
-                            + ERSTE_KONSTRUKTOR                 + ": Konstruktor mit vier Paramatern"       + "\r\n" 
-                            + ZWEITE_KONSTRUKTOR                + ": Konstruktor mit drei Parametern");
-       konstruktor = input.nextInt();
-       Artikel.pruefen(konstruktor == ERSTE_KONSTRUKTOR || konstruktor == ZWEITE_KONSTRUKTOR,
-                       "Die eingegebene Ziffer ist falsch!");
-       return konstruktor;
-    }
-    
+         
 }

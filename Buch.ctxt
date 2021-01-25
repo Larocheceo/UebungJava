@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.target=Buch
+comment0.text=\r\n\ Beschreiben\ Sie\ hier\ die\ Klasse\ Buch.\r\n\ \r\n\ @author\ Rochella\ Vofo\ &&\ Joel\ Boergers\r\n\ @version\ 0.1\r\n
+comment1.params=artikelNr\ bestand\ preis\ autor\ titel\ verlag
+comment1.target=Buch(int,\ int,\ double,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=
+comment2.target=java.lang.String\ getBeschreibung()
+comment2.text=\r\n\ Die\ Beschreibung\ eines\ Buchs\ ausgeben.\r\n\r\n\ @return\ Die\ Beschreibung\ eines\ Buchs.\r\n
+comment3.params=
+comment3.target=java.lang.String\ toString()
+comment3.text=\r\n\ Dasstellung\ eines\ Buch\ als\ Zeichenkette.\r\n\r\n\ @return\ Das\ Buch\ als\ Zeichenkette.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getAutor()
+comment4.text=\r\n\ Der\ Autor\ eines\ Buchs\ ausgeben.\r\n\r\n\ @return\ Der\ Autor\ des\ Buchs.\r\n
+comment5.params=
+comment5.target=java.lang.String\ getVerlag()
+comment5.text=\r\n\ Der\ Verlag\ eines\ Buch\ ausgeben.\r\n\r\n\ @return\ Der\ Verlag\ des\ Buches.\r\n
+comment6.params=verlag
+comment6.target=void\ setVerlag(java.lang.String)
+comment6.text=\r\n\ Der\ Verlag\ eines\ Buches\ \u00E4ndern.\r\n\r\n\ @param\ verlag\ Der\ Verlag\ des\ Buches.\r\n
+comment7.params=autor
+comment7.target=void\ setAutor(java.lang.String)
+comment7.text=\r\n\ Der\ Autor\ des\ Buchs\ darstellen.\r\n\r\n\ @param\ autor\ Der\ Autor\ des\ Buches.\r\n
+numComments=8
